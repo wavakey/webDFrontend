@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-Digital Clock</title>
+    <style type="text/css">
+        body
+        {
+            background: black;
+        }
+        
+        #MyClockDisplay
+        {
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translateX(-50%) translateY(-50%);
+            color: white;
+            font-size: 80px;
+            border: 1px solid white;
+            padding: 0px 5px 0px 5px;
+            font-family: sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="MyClockDisplay"></div>
+    <script type="text/javascript ">
+        
+        function showTime() 
+        {
+            var date=new Date(); 
+            var h=date.getHours();   
+            var m=date.getMinutes();     
+            var s=date.getSeconds(); 
+            var session ="AM";
+            if(h==0)
+            {
+                h=12;
+            }
+         
+            if(h>12)
+           {
+            h=h-12;
+            session="PM";
+           }
+
+
+           h=(h<10)? "0"+h :h;
+           m=(m<10)? "0"+m :m;
+           s=(s<10)?"0"+s :s;
+           
+        //    if(h<10)
+        //    {
+        //     h="0"+h;
+        //    }
+        //    if(s<10)
+        //    {
+        //      s="0"+s;
+        //    }
+        //    if(m<10)
+        //    {
+        //      m="0"+m;
+        //    }
+            var time = h+ ":" + m + ":" + s+ " "+ session;
+            document.getElementById("MyClockDisplay").innerText=time;
+            document.getElementById("MyClockDisplay").textContent=time;
+            
+            setTimeout(showTime,1000);//call the given method once the time is out;
+        }
+
+
+       showTime();
+        // setInterval(showTime,1000);//show updated form in every 1 second
+        //set interval after every set of time
+    </script>
+
+</body>
+</html>
